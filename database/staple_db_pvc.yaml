@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    namespace: staple
+    name: do-storage-staple-db
+spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+    requests:
+        storage: 10Gi
+    storageClassName: do-block-storage
+    

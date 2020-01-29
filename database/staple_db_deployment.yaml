@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: staple
+  name: staple-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: staple-db
+  template:
+    metadata:
+      name: staple-db
+      labels:
+        app: staple-db
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:11
+        env:
+          - name: POSTGRES_USER
+            value: staple
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: staple-db-password
+                key: password
+          - name: POSTGRES_DB
+            value: staple
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          subPath: data # important so it gets mounted correctly instead of adding a lost-and-found folder.
+          name: staple-db-data
+      volumes:
+        - name: staple-db-data
+          persistentVolumeClaim:
+            claimName: do-storage-staple-db

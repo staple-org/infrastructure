@@ -47,8 +47,8 @@ spec:
           - --port=9998
           - --hostname=staple.cronohub.org
           - --staple-db-hostname=staple-db-service.staple.svc.cluster.local:5432
-          - --staple-db-username=staples
-          - --staple-db-database=staples
+          - --staple-db-username=staple
+          - --staple-db-database=staple
           - --staple-db-password=${DB_PASSWORD}
           - --mg-domain=${MG_DOMAIN}
           - --mg-api-key=${MG_API_KEY}

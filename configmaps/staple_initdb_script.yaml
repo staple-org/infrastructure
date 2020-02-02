@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: staple-initdb-script
-  namespcae: staple
+  namespace: staple
   labels:
     app: staple
 data:

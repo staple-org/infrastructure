@@ -24,9 +24,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: staple-db-password
-                key: password
-          - name: POSTGRES_DB
-            value: staple
+                key: POSTGRES_PASSWORD
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
           subPath: data # important so it gets mounted correctly instead of adding a lost-and-found folder.

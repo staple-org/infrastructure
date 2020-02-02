@@ -31,7 +31,13 @@ spec:
         - mountPath: /var/lib/postgresql/data
           subPath: data # important so it gets mounted correctly instead of adding a lost-and-found folder.
           name: staple-db-data
+        - mountPath: /docker-entrypoint-initdb.d/staple_initdb.sql
+          subPath: staple_initdb.sql
+          name: bootstrap-script
       volumes:
         - name: staple-db-data
           persistentVolumeClaim:
             claimName: do-storage-staple-db
+        - name: bootstrap-script
+          configMap:
+            name: staple-initdb-script

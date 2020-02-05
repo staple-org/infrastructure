@@ -56,7 +56,7 @@ spec:
         - containerPort: 9998
           name: staple-service
         volumeMounts:
-        - name: staple-cert-secret
+        - name: staple-certs
           mountPath: "/etc/certs"
           readOnly: true
       volumes:

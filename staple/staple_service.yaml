@@ -15,5 +15,5 @@ spec:
   ports:
   - name: staple-service
     port: 9998
-    targetPort: staple-service-port
+    targetPort: staple-port
     protocol: TCP

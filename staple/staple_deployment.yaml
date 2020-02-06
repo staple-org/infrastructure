@@ -50,4 +50,4 @@ spec:
           - --mg-api-key=${MG_API_KEY}
         ports:
         - containerPort: 9998
-          name: staple-service-port
+          name: staple-port

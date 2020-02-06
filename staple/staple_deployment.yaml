@@ -24,23 +24,23 @@ spec:
         env:
           - name: POD_NAMESPACE
             valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
+              fieldRef:
+                fieldPath: metadata.namespace
           - name: DB_PASSWORD
             valueFrom:
-            secretKeyRef:
-              name: staple-db-password
-              key: POSTGRES_PASSWORD
+              secretKeyRef:
+                name: staple-db-password
+                key: POSTGRES_PASSWORD
           - name: MG_DOMAIN
             valueFrom:
-            secretKeyRef:
-              name: staple-mg-creds
-              key: mg_domain
+              secretKeyRef:
+                name: staple-mg-creds
+                key: mg_domain
           - name: MG_API_KEY
             valueFrom:
-            secretKeyRef:
-              name: staple-mg-creds
-              key: mg_api_key
+              secretKeyRef:
+                name: staple-mg-creds
+                key: mg_api_key
         args:
           - --staple-db-hostname=staple-db-service.staple.svc.cluster.local:5432
           - --staple-db-username=staple

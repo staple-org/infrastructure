@@ -35,12 +35,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: staple-mg-creds
-                key: mg_domain
+                key: MG_DOMAIN
           - name: MG_API_KEY
             valueFrom:
               secretKeyRef:
                 name: staple-mg-creds
-                key: mg_api_key
+                key: MG_API_KEY
         args:
           - --staple-db-hostname=staple-db-service.staple.svc.cluster.local:5432
           - --staple-db-username=staple

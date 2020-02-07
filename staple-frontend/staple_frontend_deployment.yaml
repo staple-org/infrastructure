@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: staple
+  name: staple-front
+  labels:
+    app: staple-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: staple-front
+  template:
+    metadata:
+      labels:
+        app: staple-front
+        app.kubernetes.io/name: staple-front
+        app.kubernetes.io/instance: staple-front
+    spec:
+      containers:
+      - name: staple-front
+        image: skarlso/staple-frontend:v0.0.1
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: STAPLE_HOST
+            value: staple.staple.svc.cluster.local:9998
+        ports:
+        - containerPort: 5000
+          name: frontend

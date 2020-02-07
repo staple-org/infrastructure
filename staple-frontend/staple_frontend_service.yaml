@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: staple
+  name: staple-front
+  labels:
+    app: staple-front
+    app.kubernetes.io/name: staple-front
+    app.kubernetes.io/instance: staple-front
+spec:
+  selector:
+    app: staple-front
+    app.kubernetes.io/name: staple-front
+    app.kubernetes.io/instance: staple-front
+  ports:
+  - name: frontend
+    port: 5000
+    targetPort: frontend
+    protocol: TCP

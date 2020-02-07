@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: staple-front
-        image: skarlso/staple-frontend:v0.0.1
+        image: skarlso/staple-frontend:v0.0.2
         imagePullPolicy: IfNotPresent
         env:
           - name: STAPLE_HOST

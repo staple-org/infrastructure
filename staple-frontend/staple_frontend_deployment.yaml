@@ -19,11 +19,11 @@ spec:
     spec:
       containers:
       - name: staple-front
-        image: skarlso/staple-frontend:v0.0.3
+        image: skarlso/staple-frontend:v0.0.6
         imagePullPolicy: IfNotPresent
         env:
-          - name: STAPLE_HOST
-            value: staple.staple.svc.cluster.local:9998
+          - name: REACT_APP_STAPLE_HOST
+            value: "http://staple-app.staple.svc.cluster.local:9998"
         ports:
         - containerPort: 5000
           name: frontend

@@ -2,18 +2,18 @@ kind: Service
 apiVersion: v1
 metadata:
   namespace: staple
-  name: staple
+  name: staple-service
   labels:
-    app: staple
-    app.kubernetes.io/name: staple
-    app.kubernetes.io/instance: staple
+    app: staple-service
+    app.kubernetes.io/name: staple-service
+    app.kubernetes.io/instance: staple-service
 spec:
   selector:
-    app: staple
-    app.kubernetes.io/name: staple
-    app.kubernetes.io/instance: staple
+    app: staple-service
+    app.kubernetes.io/name: staple-service
+    app.kubernetes.io/instance: staple-service
   ports:
-  - name: staple-service
+  - name: staple-s
     port: 9998
     targetPort: staple-port
     protocol: TCP

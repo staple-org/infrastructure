@@ -4,21 +4,21 @@ metadata:
   namespace: staple
   name: staple-app
   labels:
-    app: staple
+    app: staple-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: staple
+      app: staple-app
   template:
     metadata:
       labels:
-        app: staple
-        app.kubernetes.io/name: staple
-        app.kubernetes.io/instance: staple
+        app: staple-app
+        app.kubernetes.io/name: staple-app
+        app.kubernetes.io/instance: staple-app
     spec:
       containers:
-      - name: staple
+      - name: staple-app
         image: skarlso/staple:v0.0.1
         imagePullPolicy: IfNotPresent
         env:

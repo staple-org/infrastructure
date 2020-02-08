@@ -17,6 +17,10 @@ spec:
         app.kubernetes.io/name: staple-app
         app.kubernetes.io/instance: staple-app
     spec:
+      volumes:
+        - name: cert-volume
+          secret:
+            secretName: staple-certs
       containers:
       - name: staple-app
         image: skarlso/staple:v0.0.1
@@ -42,6 +46,8 @@ spec:
                 name: staple-mg-creds
                 key: MG_API_KEY
         args:
+          - --server-key-path=/etc/certs/server.key
+          - --server-crt-path=/etc/certs/server.crt
           - --staple-db-hostname=staple-db-service.staple.svc.cluster.local:5432
           - --staple-db-username=staple
           - --staple-db-database=staple
@@ -51,3 +57,7 @@ spec:
         ports:
         - containerPort: 9998
           name: staple-port
+        volumeMounts:
+          - name: cert-volume
+            readOnly: true
+            mountPath: "/etc/certs"

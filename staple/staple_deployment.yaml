@@ -4,26 +4,24 @@ metadata:
   namespace: staple
   name: staple-app
   labels:
-    app: staple-app
+    app: staple
+    app.kubernetes.io/name: staple
+    app.kubernetes.io/instance: staple
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: staple-app
+      app: staple
   template:
     metadata:
       labels:
-        app: staple-app
-        app.kubernetes.io/name: staple-app
-        app.kubernetes.io/instance: staple-app
+        app: staple
+        app.kubernetes.io/name: staple
+        app.kubernetes.io/instance: staple
     spec:
-      volumes:
-        - name: cert-volume
-          secret:
-            secretName: staple-certs
       containers:
-      - name: staple-app
-        image: skarlso/staple:v0.0.1
+      - name: staple
+        image: skarlso/staple:v0.0.7
         imagePullPolicy: IfNotPresent
         env:
           - name: POD_NAMESPACE
@@ -46,18 +44,11 @@ spec:
                 name: staple-mg-creds
                 key: MG_API_KEY
         args:
-          - --server-key-path=/etc/certs/server.key
-          - --server-crt-path=/etc/certs/server.crt
-          - --staple-db-hostname=staple-db-service.staple.svc.cluster.local:5432
+          - --staple-db-hostname=staple-db-service.cronohub.svc.cluster.local:5432
           - --staple-db-username=staple
           - --staple-db-database=staple
-          - --staple-db-password=${DB_PASSWORD}
-          - --mg-domain=${MG_DOMAIN}
-          - --mg-api-key=${MG_API_KEY}
+          - --staple-db-password=$(DB_PASSWORD)
+          - --mg-domain=$(MG_DOMAIN)
+          - --mg-api-key=$(MG_API_KEY)
         ports:
         - containerPort: 9998
-          name: staple-port
-        volumeMounts:
-          - name: cert-volume
-            readOnly: true
-            mountPath: "/etc/certs"

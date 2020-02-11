@@ -5,8 +5,6 @@ metadata:
   name: staple-app
   labels:
     app: staple
-    app.kubernetes.io/name: staple
-    app.kubernetes.io/instance: staple
 spec:
   replicas: 1
   selector:
@@ -21,7 +19,7 @@ spec:
     spec:
       containers:
       - name: staple
-        image: skarlso/staple:v0.0.7
+        image: skarlso/staple:v0.0.11
         imagePullPolicy: IfNotPresent
         env:
           - name: POD_NAMESPACE
@@ -51,4 +49,5 @@ spec:
           - --mg-domain=$(MG_DOMAIN)
           - --mg-api-key=$(MG_API_KEY)
         ports:
-        - containerPort: 9998
+        - name: staple-port
+          containerPort: 9998

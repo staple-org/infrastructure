@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   namespace: staple
-  name: staple
+  name: staple-service
   labels:
     app: staple
     app.kubernetes.io/name: staple
@@ -13,5 +13,6 @@ spec:
     app.kubernetes.io/name: staple
     app.kubernetes.io/instance: staple
   ports:
-  - port: 80
-    targetPort: 9998
+  - name: service-port
+    port: 9998
+    targetPort: staple-port

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: staple
-        image: skarlso/staple:v0.0.11
+        image: skarlso/staple:v0.0.12
         imagePullPolicy: IfNotPresent
         env:
           - name: POD_NAMESPACE

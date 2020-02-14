@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: staple
-        image: skarlso/staple:v0.0.18
+        image: skarlso/staple:v0.0.19
         imagePullPolicy: IfNotPresent
         resources:
           requests:

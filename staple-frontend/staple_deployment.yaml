@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: staple
+  name: staple-frontend
+  labels:
+    app: staple-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: staple-frontend
+  template:
+    metadata:
+      labels:
+        app: staple-frontend
+        app.kubernetes.io/name: staple-frontend
+        app.kubernetes.io/instance: staple-frontend
+    spec:
+      containers:
+      - name: staple-frontend
+        image: skarlso/staple-frontend:v0.0.9
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "250m"
+          limits:
+            memory: "1000Mi"
+            cpu: "500m"
+        env:
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: REACT_APP_STAPLE_DEV_HOST
+            value: ""
+        ports:
+        - name: staple-front
+          containerPort: 5000
